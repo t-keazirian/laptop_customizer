@@ -1,8 +1,6 @@
 import React from 'react';
-import Processor from './Processor';
-import OperatingSystem from './OperatingSystem';
-import VideoCard from './VideoCard';
-import Display from './Display';
+import Item from './Item';
+// import Item from t'i.
 
 const FEATURES = {
   Processor: [
@@ -51,30 +49,18 @@ class Features extends React.Component {
   render() {
     return (
       <div>
-        <Processor
-          selected={this.props.selected}
-          features={FEATURES.Processor}
-          updateFeature={this.props.updateFeature}
-          currFormat={this.props.currFormat}
-        />
-        <OperatingSystem
-          selected={this.props.selected}
-          features={FEATURES['Operating System']}
-          updateFeature={this.props.updateFeature}
-          currFormat={this.props.currFormat}
-        />
-        <VideoCard
-          selected={this.props.selected}
-          features={FEATURES['Video Card']}
-          updateFeature={this.props.updateFeature}
-          currFormat={this.props.currFormat}
-        />
-        <Display
-          selected={this.props.selected}
-          features={FEATURES.Display}
-          updateFeature={this.props.updateFeature}
-          currFormat={this.props.currFormat}
-        />
+        {Object.keys(FEATURES).map((feature, idx) => {
+          return (
+            <Item
+              key={idx}
+              selected={this.props.selected}
+              features={FEATURES}
+              feature={feature}
+              updateFeature={this.props.updateFeature}
+              currFormat={this.props.currFormat}
+            />
+          )
+        })}
       </div>
     )
   }

@@ -1,11 +1,11 @@
 import React from 'react';
 import slugify from 'slugify';
 
-class Processor extends React.Component {
+class Item extends React.Component {
   render() {
-    const feature = 'Processor';
+    const feature = this.props.feature;
 
-    const options = this.props.features.map(item => {
+    const options = this.props.features[feature].map(item => {
       console.log(item);
       const itemHash = slugify(JSON.stringify(item));
       return (
@@ -28,7 +28,7 @@ class Processor extends React.Component {
     return (
       <fieldset className="feature">
         <legend className="feature__name">
-          <h3>Processor</h3>
+          <h3>{feature}</h3>
         </legend>
         {options}
       </fieldset>
@@ -36,4 +36,4 @@ class Processor extends React.Component {
   }
 }
 
-export default Processor;
+export default Item;
